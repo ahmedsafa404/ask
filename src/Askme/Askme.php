@@ -3,9 +3,6 @@ namespace Askme\Askme;
 
 use PDO;
 
-
-
-
 class Askme
 {
     //Database Migration
@@ -462,18 +459,23 @@ class Askme
 
     public function Answer($info='')
     {
-        $this->answer = htmlspecialchars(htmlentities(stripslashes(strip_tags($info['answer']))));
-        $questionID = (int)htmlspecialchars(htmlentities(stripslashes(strip_tags($info['questionID']))));
-        $userID = (int)htmlspecialchars(htmlspecialchars(stripslashes(strip_tags($info['userID']))));
 
-        $postAnswer = $this->dbconnect->prepare("INSERT INTO comments(question_id,user_id,answer) VALUES (:question_id,:user_id,:answer)");
-        $postAnswer->bindParam(':question_id',$questionID);
-        $postAnswer->bindParam(':user_id',$userID);
-        $postAnswer->bindParam(':answer',$this->answer);
+        if(isset($_POST['post']))
+        {
+            $answer = htmlspecialchars(htmlentities(stripslashes(strip_tags($_POST['answer']))));
+            $questionID = (int)htmlspecialchars(htmlentities(stripslashes(strip_tags($_POST['questionID']))));
+            $userID = (int)htmlspecialchars(htmlspecialchars(stripslashes(strip_tags($_POST['userID']))));
 
-        $postAnswer->execute();
+            $postAnswer = $this->dbconnect->prepare("INSERT INTO comments(question_id,user_id,answer) VALUES (:question_id,:user_id,:answer)");
+            $postAnswer->bindParam(':question_id',$questionID);
+            $postAnswer->bindParam(':user_id',$userID);
+            $postAnswer->bindParam(':answer',$answer);
 
-        echo "Thank you for your answer";
+            $postAnswer->execute();
+
+            echo "Thank you for your answer";
+        }
+
 
     }
 
