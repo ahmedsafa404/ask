@@ -1,0 +1,42 @@
+logo{
+    margin-left: 40px;
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: none;
+}
+a:active, a:hover {
+    text-decoration: none;
+}
+.footer-bottom {
+    background: #000000;
+    color: #ffffff;
+    padding-top: 10px;
+}
+footer{
+    background: rgb(204, 204, 204);
+	padding-top: 30px;
+}
+.list-group-item p {
+    font-size: 13px;
+}
+.user{
+    background-color:#337ab7;
+    color:#ffffff;
+}
+.user  span {color:#ffffff; text-align: inline;}
+.user p {color:#ffffff;}
+.panel-heading a {
+	color: #fff;
+}
+kbd {
+    background-color: #27ae60;
+}
+.navbar-default .navbar-nav>li>a {
+    color: black;
+}
+.loginmodal-container{
+    background: #f3f3f3;
+    padding: 30px;
+}
